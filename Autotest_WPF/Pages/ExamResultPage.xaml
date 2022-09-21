@@ -1,0 +1,22 @@
+﻿<Page x:Class="Autotest_WPF.Pages.ExamResultPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Autotest_WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExamResultPage">
+
+    <Grid>
+        <StackPanel >
+            <Label Content="Question Count"/>
+            <TextBox x:Name="QuestionCount"/>
+            <Label Content="Correct Answer Count"/>
+            <TextBox x:Name="CorrectAnswerCount"/>
+
+        </StackPanel>
+        <Button Content="Menu" Height="40" Width="100" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click"> </Button>
+    </Grid>
+</Page>

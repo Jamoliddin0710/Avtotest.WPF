@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="car.jpg" />
+    <None Remove="images.jpg" />
+    <None Remove="Pages\avto.jpg" />
+    <None Remove="Pages\car.jpg" />
+    <None Remove="Pages\download.png" />
+    <None Remove="Pages\images.jpg" />
+    <None Remove="Pages\images.png" />
+    <None Remove="Pages\littlecopy.jpeg" />
+    <None Remove="Pages\rasm.jpg" />
+    <None Remove="Pages\unnamed.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="car.jpg" />
+    <Resource Include="images.jpg" />
+    <Resource Include="Pages\avto.jpg" />
+    <Resource Include="Pages\car.jpg" />
+    <Resource Include="Pages\download.png" />
+    <Resource Include="Pages\images.jpg" />
+    <Resource Include="Pages\images.png" />
+    <Resource Include="Pages\littlecopy.jpeg" />
+    <Resource Include="Pages\rasm.jpg" />
+    <Resource Include="Pages\unnamed.png" />
+  </ItemGroup>
+
+</Project>

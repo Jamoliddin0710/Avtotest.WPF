@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autotest_WPF", "Autotest_WPF\Autotest_WPF.csproj", "{6FAA3BC5-F498-498D-BD1C-A1F872BAF8ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{D2E2CF82-AAE6-45FE-B115-092CB6F2D5A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{5A372F58-2559-491D-8693-3954A4B0403B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{85EF8FF2-6C5F-4C4D-B6D9-05AB06CA0DE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FAA3BC5-F498-498D-BD1C-A1F872BAF8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FAA3BC5-F498-498D-BD1C-A1F872BAF8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FAA3BC5-F498-498D-BD1C-A1F872BAF8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FAA3BC5-F498-498D-BD1C-A1F872BAF8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A372F58-2559-491D-8693-3954A4B0403B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A372F58-2559-491D-8693-3954A4B0403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A372F58-2559-491D-8693-3954A4B0403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A372F58-2559-491D-8693-3954A4B0403B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A372F58-2559-491D-8693-3954A4B0403B} = {D2E2CF82-AAE6-45FE-B115-092CB6F2D5A2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CB5853F-72D5-48AA-8647-1FDA908BFAC2}
+	EndGlobalSection
+EndGlobal
