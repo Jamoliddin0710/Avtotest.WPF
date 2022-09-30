@@ -28,7 +28,7 @@ namespace Autotest_WPF
             _instance = this;
               QuestionRepository = new QuestionRepository();
             TicketRepository = new TicketRepository();
-            MainWindow.Instance.MainFrame.Navigate(new MenuPage());
+         MainWindow.Instance.MainFrame.Navigate(new MenuPage());
          
         }
         public void DisplayPage(EPage page)
@@ -42,6 +42,9 @@ namespace Autotest_WPF
 
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow.Instance.TicketRepository.WriteAllText();
+        }
     }
 }

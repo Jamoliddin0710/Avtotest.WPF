@@ -9,7 +9,7 @@ namespace Autotest_WPF
 {
     public static class QuestionCounForSettings
     {
-        public static int TicketQuestionCount = 20;
+        public static int TicketQuestionCount = 5;
         public static List <Ticket> UserTickets;
     }
 }

@@ -29,29 +29,26 @@ public partial class ExaminationPage : Page
             CurrentTicket = CreateForExamQuestions(indexbutton.Value);
             Ticket.Content = $"Ticket {indexbutton.Value + 1}";
             isTicket = true;
-
         }
         else
         {
             var randomTicketIndex = new Random().Next(MainWindow.Instance.QuestionRepository.Questions.Count / QuestionCounForSettings.TicketQuestionCount);
-            Ticket.Content = $"ExaminationStart ({randomTicketIndex + 1})";
+            Ticket.Content = $"Examination Start";
             CurrentTicket = CreateForExamQuestions(randomTicketIndex);
         }
         currentindex = 0;
-
+        ShowQuestionIndexButton();
         ShowQuestions();
-
     }
+
     QuestionEntity question;
     public void ShowQuestions()
     {
-
-
-        ShowQuestionIndexButton();
         question = CurrentTicket.Questions[currentindex];
         ChangeButton(true);
         LoadQuestionImage(question.Media);
         SavolText.Text = question.Question;
+        CHoicePanel.Children.Clear();
         CreateChoiceButton();
     }
 
@@ -75,26 +72,10 @@ public partial class ExaminationPage : Page
     }
     public void ShowQuestionIndexButton()
     {
-        QuestionIndexButton.Children.Clear();
-        CHoicePanel.Children.Clear();
-
         for (int i = 0; i < CurrentTicket.Questions.Count; i++)
         {
-            //ChangeButton(false);
             var question = CurrentTicket.Questions[i];
             var button = new Button();
-            if (question.Isclicked)
-            {
-                if (question.IsCorrect)
-                {
-                    button.Background = new SolidColorBrush(Colors.Green);
-                }
-                else
-                {
-                    button.Background = new SolidColorBrush(Colors.Red);
-                }
-            }
-
             button.Tag = i;
             button.Content = i + 1;
             button.Width = 30;
@@ -110,12 +91,10 @@ public partial class ExaminationPage : Page
     {
         ChangeButton(false);
         var questionindex = ((sender as Button).Tag);
-
         currentindex = Convert.ToInt32(questionindex);
 
         ShowQuestions();
     }
-
     public void CreateChoiceButton()
     {
         var choice = CurrentTicket.Questions[currentindex].Choices;
@@ -123,62 +102,50 @@ public partial class ExaminationPage : Page
         {
             var button = new Button();
             button.Style = FindResource("ChoiceButton") as Style;
-            if (choice[i].IsSelected)
+
+            if(CurrentTicket.IsChoiceComplited(currentindex,i))
+            { 
+            if (choice[i].Answer)
             {
-                if (choice[i].Answer)
-                {
-                    button.Background = new SolidColorBrush(Colors.Green);
-                    (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Green;
-                }
-                else
-                {
-                    button.Background = new SolidColorBrush(Colors.Red);
-                    (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Red;
-                }
+                button.Background = new SolidColorBrush(Colors.Green);
+                (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Green;
             }
-
-
+            else
+            {
+                button.Background = new SolidColorBrush(Colors.Red);
+                (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Red;
+            }
+        }
             button.Tag = i;
             var Textblock = new TextBlock();
             Textblock.Text = $"{choice[i].Text}";
             Textblock.TextWrapping = TextWrapping.Wrap;
             button.Content = Textblock;
-
             button.DataContext = question.Choices[i];
             button.Click += ChoiceButton_Click;
-
             CHoicePanel.Children.Add(button);
         }
     }
 
     private void ChoiceButton_Click(object sender, RoutedEventArgs e)
     {
-        if (CurrentTicket.Questions[currentindex].Isclicked == true) return;
+        if (CurrentTicket.IsComplited(currentindex)) return;
         var button = sender as Button;
         var choice = (Choice)button.DataContext;
-
+        var choiceindex = (int)(button.Tag);
         if (choice.Answer)
         {
             button.Background = new SolidColorBrush(Colors.Green);
             (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Green;
             CurrentTicket.CorrectAnswerCount++;
-            CurrentTicket.Questions[currentindex].IsCorrect = true;
-
-
         }
         else
         {
             button.Background = new SolidColorBrush(Colors.Red);
             (QuestionIndexButton.Children[currentindex] as Button).Background = Brushes.Red;
-
         }
-
-        choice.IsSelected = true;
-
-        CurrentTicket.Questions[currentindex].Isclicked = true;
+        CurrentTicket.IndexSaves.Add(new IndexSave(currentindex, choiceindex));
     }
-
-     
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
@@ -193,7 +160,7 @@ public partial class ExaminationPage : Page
         else imagePath = Path.Combine(Environment.CurrentDirectory, "QuestionImages", $"car.png");
         QuestionImage.Source = new BitmapImage(new Uri(imagePath));
     }
-    
+
     public Ticket CreateForExamQuestions(int ticketIndex)
     {
         var QuestionList = MainWindow.Instance.QuestionRepository.Questions.Skip(ticketIndex * QuestionCounForSettings.TicketQuestionCount).Take(QuestionCounForSettings.TicketQuestionCount).ToList();
@@ -204,9 +171,18 @@ public partial class ExaminationPage : Page
     {
         if (isTicket)
         {
+            var TicketResultList = MainWindow.Instance.TicketRepository.TicketList;
             MainWindow.Instance.MainFrame.Navigate(new ExamResultPage(CurrentTicket));
+            if (TicketResultList.Any(list => list.Index == CurrentTicket.Index))
+            {
+              var ticket =   TicketResultList.First(list => list.Index == CurrentTicket.Index);
+              TicketResultList.Remove(ticket);
+            }
             MainWindow.Instance.TicketRepository.TicketList.Add(CurrentTicket);
-            MainWindow.Instance.TicketRepository.SolveTicket++;
+            if (CurrentTicket.IsAllCorrect)
+            {
+                MainWindow.Instance.TicketRepository.SolveTicket++;
+            }
             MainWindow.Instance.TicketRepository.SolveQuestion += CurrentTicket.CorrectAnswerCount;
         }
         else
@@ -214,7 +190,7 @@ public partial class ExaminationPage : Page
             MainWindow.Instance.MainFrame.Navigate(new ExamResultPage(CurrentTicket));
         }
     }
-    
+
 }
 
 

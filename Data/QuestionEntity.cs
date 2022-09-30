@@ -8,8 +8,7 @@ namespace Data
 {
     public class QuestionEntity
     {
-        public bool Isclicked;
-        public bool IsCorrect;
+      
         public int Id { get; set; }
         public string Question { get; set; }
         public string Description { get; set; }
@@ -27,6 +26,6 @@ namespace Data
     {
         public string Text { get; set; }
         public bool Answer { get; set; }
-        public bool IsSelected { get; set; }
+    
     }
 }

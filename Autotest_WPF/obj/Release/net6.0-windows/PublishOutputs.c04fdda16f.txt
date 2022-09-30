@@ -1,0 +1,8 @@
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Autotest_WPF.exe
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Autotest_WPF.dll
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Autotest_WPF.deps.json
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Autotest_WPF.runtimeconfig.json
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Autotest_WPF.pdb
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Newtonsoft.Json.dll
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Data.dll
+C:\Users\User\Desktop\Autotest_WPF\Autotest_WPF\bin\Release\net6.0-windows\publish\Data.pdb

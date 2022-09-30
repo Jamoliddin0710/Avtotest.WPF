@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Autotest_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" Background="SkyBlue">
+        Title="MainWindow" Height="600" Width="800" Background="SkyBlue" Closing="Window_Closing">
 
     <Border >
      <Frame  x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
