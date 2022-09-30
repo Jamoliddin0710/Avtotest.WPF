@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Autotest_WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800" Background="SkyBlue"
+      d:DesignHeight="600" d:DesignWidth="800" 
       Title="ExaminationPage">
     <Page.Resources>
         <Style x:Key="ChoiceButton" TargetType="Button">
@@ -17,11 +17,11 @@
     </Page.Resources>
     <Grid>
 
-        <StackPanel x:Name="Exam">
+        <StackPanel x:Name="Exam" Background="#FFC1CBFF">
             <Label Name="Ticket"  Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20"></Label>
             <ScrollViewer HorizontalScrollBarVisibility="Visible">
 
-                <StackPanel x:Name="QuestionIndexButton" HorizontalAlignment="Left"  Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center"  x:Name="QuestionIndexButton"  Orientation="Horizontal">
 
                 </StackPanel>
             </ScrollViewer>
@@ -29,14 +29,14 @@
             <TextBlock  Name="SavolText" TextWrapping="Wrap"  FontSize="20" Text="Bu yerda savol turadi"></TextBlock>
 
             <ScrollViewer Height="150" VerticalScrollBarVisibility="Visible">
-            <StackPanel x:Name="CHoicePanel" Height="200">
+                <StackPanel x:Name="CHoicePanel" Height="200">
 
                 </StackPanel>
             </ScrollViewer>
             <DockPanel >
-            <Button x:Name="Back" HorizontalAlignment="Left" Margin="0,0,5,0"
+                <Button x:Name="Back" HorizontalAlignment="Left" Margin="0,0,5,0"
                       Content="Back" Width="100" Height="40" BorderBrush="Teal" Click="Back_Click"   />
-            <Button x:Name="Result" HorizontalAlignment="Right" Margin="0,0,10,0"
+                <Button x:Name="Result" HorizontalAlignment="Right" Margin="0,0,10,0"
                     Content="Result" Width="100" Height="40"  BorderBrush="Green" Click="Result_Click"></Button>
             </DockPanel>
         </StackPanel>

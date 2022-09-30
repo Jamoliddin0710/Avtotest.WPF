@@ -40,7 +40,7 @@ namespace Autotest_WPF
                 if (MainWindow.Instance.TicketRepository.TicketList.Any(t => t.Index == i))
                 {
                     var ticket = MainWindow.Instance.TicketRepository.TicketList.First(t => t.Index == i);
-                    button.Content = ticket.IsComplited ? $"Ticket {i + 1}✔ " : $"Ticket {i + 1} {ticket.CorrectAnswerCount}/{ticket.Questionscount}";
+                    button.Content = ticket.IsAllCorrect ? $"Ticket {i + 1}✔ " : $"Ticket {i + 1} {ticket.CorrectAnswerCount}/{ticket.Questionscount}";
                 }
                 else
                 {

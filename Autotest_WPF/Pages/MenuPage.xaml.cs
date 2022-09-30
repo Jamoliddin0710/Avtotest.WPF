@@ -24,11 +24,22 @@ namespace Autotest_WPF
         public MenuPage()
         {
             InitializeComponent();
+            MainWindow.Instance.TicketRepository.SolveQuestion =  ResultQuestions();
+            MainWindow.Instance.TicketRepository.SolveTicket = TicketResultExam();
+            TicketResultExam();
             QuestionResult.Text = $"{MainWindow.Instance.TicketRepository.SolveQuestion.ToString()}/{MainWindow.Instance.QuestionRepository.Questions.Count}";
             TicketResult.Text = $"{MainWindow.Instance.TicketRepository.SolveTicket.ToString()}/{MainWindow.Instance.QuestionRepository.GetQuestionTicket()}";
         }
+        public int ResultQuestions()
+        {
+            return MainWindow.Instance.TicketRepository.SolveQuestion = MainWindow.Instance.TicketRepository.TicketList.Sum(ticket => ticket.CorrectAnswerCount);
+          
+        }
 
-        
+        public int TicketResultExam()
+        {
+            return MainWindow.Instance.TicketRepository.TicketList.Count(ticket => ticket.IsAllCorrect);
+        }
         private void ExamButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.Instance.MainFrame.Navigate(new TicketPage());
